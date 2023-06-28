@@ -89,7 +89,7 @@ export default class FinderBar extends Component {
             placeholder="Search images..."
             className="input-form"
           />
-          <button type="submit">&#x1F36D;</button>
+          <button  type="submit">&#x1F36D;</button>
         </form>
       </header>
     );

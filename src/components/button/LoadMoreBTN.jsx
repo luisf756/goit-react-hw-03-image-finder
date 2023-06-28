@@ -1,10 +1,10 @@
-import './loadMore.css'
+import './LoadMore.css'
 import PropTypes from 'prop-types';
 
 
 export const LoadMoreBTN= ({ children, onClick }) => {
     return (
-      <button type="button" className={'Btn'} onClick={onClick} aria-label="Load more">
+      <button type="button" className='Btn' onClick={onClick} aria-label="Load more">
         {children}
       </button>
     );

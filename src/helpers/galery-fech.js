@@ -44,7 +44,7 @@ export const GalleryApi = async (query, page) => {
         key: API_KEY,
         image_type: 'photo',
         orientation: 'horizontal',
-        per_page: 6,
+        per_page: 12,
     });
 
     const response = await axios.get(`${BASE_URL}?${searchParams}`);
