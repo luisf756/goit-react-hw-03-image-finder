@@ -1,4 +1,4 @@
-import './LoadMore.css'
+// import './LoadMore.css'
 import PropTypes from 'prop-types';
 
 
