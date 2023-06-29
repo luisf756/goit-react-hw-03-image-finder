@@ -40,7 +40,7 @@ import  './Modal.css';
 export const Modal  = ({children, onClose})=>{
   
   return (
-    <article className='modal is-open' >
+    <article className='modal is-open' onClick={onClose}>
       <div className='modal-container'>
         <button class='modal-close' onClick={onClose} >X</button>
         

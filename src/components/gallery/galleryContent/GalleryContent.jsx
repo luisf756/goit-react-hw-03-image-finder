@@ -6,6 +6,7 @@ import { LoadMoreBTN } from '../../button/LoadMoreBTN';
 import { GalleryApi } from '../../../helpers/galery-fech';
 import { DisplayImage } from '../displayImage/DisplayImage';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import Notiflix from 'notiflix';
 import  './Gallery.css';
 
 
@@ -21,13 +22,13 @@ export default class GalleryContent extends Component {
       async componentDidUpdate(prevProps) {
         const prevSearchQuery = prevProps.query;
         const nextSearchQuery = this.props.query;
-    
+        
         if (prevSearchQuery !== nextSearchQuery) {
           this.setState({ status: 'pending', page: 1 });
-    
+          
           try {
             const { hits, total } = await GalleryApi(nextSearchQuery, 1);
-    
+            Notiflix.Loading.standard();
             if (total === 0) {
               const error = new Error('Sorry, there are no images matching your search query.');
               this.setState({ error, status: 'rejected' });
@@ -42,6 +43,7 @@ export default class GalleryContent extends Component {
           } catch (error) {
             this.setState({ error, status: 'rejected' });
           }
+          Notiflix.Loading.remove();
         }
       }
 
@@ -57,6 +59,7 @@ export default class GalleryContent extends Component {
         }
       };
     render(){
+      
         const { gallery, error, status } = this.state;
 
     if (status === 'pending') {
@@ -69,6 +72,8 @@ export default class GalleryContent extends Component {
     }
 
     if (status === 'resolved') {
+      
+
       return (
         <>
           <div className={'Gallery'}>
