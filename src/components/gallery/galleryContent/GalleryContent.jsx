@@ -1,4 +1,4 @@
-// import GalleryApi from '../galery-fech';
+
 import { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { LoadMoreBTN } from '../../button/LoadMoreBTN';
@@ -12,7 +12,6 @@ import  './Gallery.css';
 
 
 export default class GalleryContent extends Component {
-    // const galleryApi = new GalleryApi();
     state = {
         gallery: [],
         error: null,

@@ -2,44 +2,27 @@
 import PropTypes from 'prop-types';
 // import { createPortal } from 'react-dom';
 import  './modal.css';
-
-// const modalRoot = document.getElementById('modal-root');
-
-// export class Modal extends Component {
-//   componentDidMount() {
-//     window.addEventListener('keydown', this.handleKeyDown);
-//   }
-
-//   componentWillUnmount() {
-//     window.removeEventListener('keydown', this.handleKeyDown);
-//   }
-
-//   handleKeyDown = (e) => {
-//     if (e.code === 'Escape') {
-//       this.props.onClose();
-//     }
-//   };
-
-//   handleClickBackdrop = (e) => {
-//     if (e.target === e.currentTarget) {
-//       this.props.onClose();
-//     }
-//   };
-
-//   render() {
-//     return createPortal(
-//       <div className='Overlay' onClick={this.handleClickBackdrop}>
-//         <div className='ModalStyled'>{this.props.children}</div>
-//       </div>,
-//       modalRoot
-//     );
-//   }
-// }
+import { useEffect } from 'react';
 
 
 export const Modal  = ({children, onClose})=>{
   
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
+
   return (
+    
     <article className='modal is-open' onClick={onClose}>
       <div className='modal-container'>
         <button class='modal-close' onClick={onClose} >X</button>
