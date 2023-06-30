@@ -77,8 +77,11 @@ export default class FinderBar extends Component {
 
   render() {
     return (
-      <header>
+      <>
+        <header>
+        
         <form className="search-form" onSubmit={this.handleSubmit}>
+          <div>
           <input
             type="text"
             name="searchQuery"
@@ -89,9 +92,18 @@ export default class FinderBar extends Component {
             placeholder="Search images..."
             className="input-form"
           />
+          
           <button  type="submit">&#x1F36D;</button>
+          
+          
+          </div>
+          
         </form>
+        
+        
       </header>
+      </>
+      
     );
   }
 }

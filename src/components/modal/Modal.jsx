@@ -5,7 +5,7 @@ import  './modal.css';
 import { useEffect } from 'react';
 
 
-export const Modal  = ({children, onClose})=>{
+export const Modal  = ({children,isOpen, onClose})=>{
   
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -20,11 +20,12 @@ export const Modal  = ({children, onClose})=>{
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose]);
-
+  
+  const handelModalClic=(e)=> e.stopPropagation();
   return (
     
-    <article className='modal is-open' onClick={onClose}>
-      <div className='modal-container'>
+    <article className={`modal ${isOpen && "is-open"}`} onClick={onClose}>
+      <div className='modal-container' onClick={handelModalClic}>
         <button class='modal-close' onClick={onClose} >X</button>
         
         {children}
